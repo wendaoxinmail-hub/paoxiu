@@ -200,7 +200,7 @@ class RunTrackingService : Service() {
                 lng = update.lng,
                 accuracyM = update.accuracyM,
                 recordedAt = update.recordedAt,
-                isNetworkFix = update.isNetworkFix() && source.startsWith("baidu"),
+                isNetworkFix = update.isNetworkFix(),
             )
             val pointCount = runRepository.getPointCount(runId)
             val prev = runSessionStore.activeRun.value

@@ -108,6 +108,32 @@ class RunGeoUtilsTest {
     }
 
     @Test
+    fun evaluatePoint_overMaxRawAccuracy_rejected() {
+        RunGeoUtils.evaluatePoint(
+            accuracyM = 10f,
+            lat = 39.9042,
+            lng = 116.4074,
+            lastLat = null,
+            lastLng = null,
+            speedKmh = 0f,
+            lastRecordedAt = null,
+            recordedAt = 1_000L,
+        )
+        val step = RunGeoUtils.evaluatePoint(
+            accuracyM = 150f,
+            lat = 39.9042 + oneMeterLat * 5,
+            lng = 116.4074,
+            lastLat = 39.9042,
+            lastLng = 116.4074,
+            speedKmh = 4f,
+            lastRecordedAt = 1_000L,
+            recordedAt = 11_000L,
+        )
+        assertFalse(step.accept)
+        assertEquals(RunGeoUtils.RejectReason.ACCURACY, step.reason)
+    }
+
+    @Test
     fun splitTrackByGap_singlePoint_returnsEmpty() {
         val a = RunTrackPoint(39.9042, 116.4074)
         assertTrue(RunGeoUtils.splitTrackByGap(listOf(a)).isEmpty())

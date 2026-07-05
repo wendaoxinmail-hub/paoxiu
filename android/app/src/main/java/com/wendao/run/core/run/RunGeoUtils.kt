@@ -55,8 +55,10 @@ object RunGeoUtils {
         maxAccuracyM: Float = MAX_ACCURACY_M,
         isNetworkFix: Boolean = false,
     ): AcceptDecision {
+        if (com.wendao.run.core.location.LocationAccuracyUtils.isOverMaxAccuracy(accuracyM, maxAccuracyM)) {
+            return AcceptDecision(false, RejectReason.ACCURACY)
+        }
         val accuracy = com.wendao.run.core.location.LocationAccuracyUtils.normalizeAccuracyM(accuracyM)
-            .coerceAtMost(maxAccuracyM)
         if (accuracy > maxAccuracyM) {
             return AcceptDecision(false, RejectReason.ACCURACY)
         }

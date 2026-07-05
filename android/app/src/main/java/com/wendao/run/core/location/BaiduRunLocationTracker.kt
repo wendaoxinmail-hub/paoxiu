@@ -270,6 +270,6 @@ class BaiduRunLocationTracker @Inject constructor(
         private const val SCAN_SPAN_MS = 1000
         private const val SINGLE_FIX_TIMEOUT_MS = 8_000L
         private const val CACHE_TTL_MS = 120_000L
-        private const val MAX_ACCURACY_M = 150f
+        private const val MAX_ACCURACY_M = 100f
     }
 }

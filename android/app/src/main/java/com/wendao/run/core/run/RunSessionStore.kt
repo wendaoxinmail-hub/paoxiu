@@ -39,7 +39,7 @@ data class ActiveRunState(
     /** 定位/地图鉴权提示（如百度 AK 未配置） */
     val locationHint: String? = null,
 ) {
-    /** 主配速：总时长 / 总距离（Keep 平均配速），不做滚动/移动配速混用 */
+    /** 主配速：总时长 / 总距离（Keep 平均配速） */
     val paceSecPerKm: Double? =
         RunGeoUtils.computePaceSecPerKm(distanceM, durationSec.coerceAtLeast(1))
 }

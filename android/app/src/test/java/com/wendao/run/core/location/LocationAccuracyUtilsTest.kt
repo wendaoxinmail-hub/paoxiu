@@ -19,6 +19,14 @@ class LocationAccuracyUtilsTest {
 
     @Test
     fun normalize_excessive_capsAtMax() {
-        assertEquals(120f, LocationAccuracyUtils.normalizeAccuracyM(500f))
+        assertEquals(100f, LocationAccuracyUtils.normalizeAccuracyM(500f))
+    }
+
+    @Test
+    fun isOverMaxAccuracy_rejectsBeforeNormalize() {
+        assertTrue(LocationAccuracyUtils.isOverMaxAccuracy(150f))
+        assertTrue(LocationAccuracyUtils.isOverMaxAccuracy(500f))
+        assertEquals(false, LocationAccuracyUtils.isOverMaxAccuracy(0f))
+        assertEquals(false, LocationAccuracyUtils.isOverMaxAccuracy(50f))
     }
 }

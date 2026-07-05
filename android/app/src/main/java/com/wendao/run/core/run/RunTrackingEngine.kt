@@ -53,6 +53,9 @@ class RunTrackingEngine {
         smoothLng = null
     }
 
+    /** 引擎内部累计的移动时长（秒），仅速度 ≥0.6 km/h 时累加 */
+    val movingDurationSec: Long get() = movingDurationMs / 1000
+
     fun ingest(
         rawLat: Double,
         rawLng: Double,
