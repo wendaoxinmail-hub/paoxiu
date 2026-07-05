@@ -1,0 +1,36 @@
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/**/build/
+android/**/.cxx/
+android/**/*.iml
+android/.kotlin/
+android/captures/
+android/app/debug.keystore.properties
+
+# 服务端 / 部署（不上传）
+server/
+deploy/
+dist/
+
+# 部署文档与脚本
+docs/DEPLOY_ECS.md
+docs/ALIYUN_SSH.md
+scripts/demo-api.sh
+scripts/test-mvp-api.sh
+scripts/test-spirit-root-e2e.sh
+
+# Env & secrets
+.env
+.env.*
+*.local
+**/secrets.properties
+**/local.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
